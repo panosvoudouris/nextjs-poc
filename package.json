@@ -3,13 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 4000",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -p 4001"
   },
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
     "next": "9.1.4",
     "react": "16.12.0",
     "react-dom": "16.12.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "@types/node": "^12.12.9",
+    "@types/react": "^16.9.11",
+    "eslint-plugin-prettier": "^3.1.1",
+    "isomorphic-unfetch": "^3.0.0",
+    "jest": "^24.9.0",
+    "prettier": "^1.19.1",
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.7.2"
   }
 }

@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "module": "esnext",
+    "target": "es6",
+    "types": ["node", "jest"],
+    "jsx": "preserve",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "isolatedModules": true
+  },
+  "include": ["./components/**/*", "./pages/**/*"],
+  "exclude": ["**/*.test.tsx", "**/*.test.ts", "**/setupTests.ts", "jest"],
+  "typeRoots": ["./src/types"]
+}
