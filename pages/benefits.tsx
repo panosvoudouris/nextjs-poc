@@ -1,9 +1,8 @@
 import React from 'react';
 import { NextPageContext } from 'next';
 import Link from 'next/link';
-import Head from 'next/head';
 import fetch from 'isomorphic-unfetch';
-import Header from '../components/header';
+import PageTemplate from '../templates/top_page';
 
 type BenefitsProps = {
   pageData: any;
@@ -61,21 +60,12 @@ class Benefits extends React.Component<BenefitsProps> {
     );
 
     return (
-      <div>
-        <Head>
-          <title>Citizens Advice - Benefits</title>
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-
-        <Header />
-
-        <main className="constrained mh-auto ph-6">
-          <h1 className="h1">{attributes.title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: attributes.body }}></div>
-          <h2 className="h2">Related items</h2>
-          <ul>{relatedItems}</ul>
-        </main>
-      </div>
+      <PageTemplate title="Benefits">
+        <h1 className="h1">{attributes.title}</h1>
+        <div dangerouslySetInnerHTML={{ __html: attributes.body }}></div>
+        <h2 className="h2">Related items</h2>
+        <ul>{relatedItems}</ul>
+      </PageTemplate>
     );
   }
 }

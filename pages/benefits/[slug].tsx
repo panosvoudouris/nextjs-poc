@@ -2,8 +2,7 @@ import React from 'react';
 import { withRouter, SingletonRouter } from 'next/router';
 import { NextPageContext } from 'next';
 import fetch from 'isomorphic-unfetch';
-import Head from 'next/head';
-import Header from '../../components/header';
+import PageTemplate from '../../templates/top_page';
 
 type PageProps = {
   pageData: any;
@@ -35,18 +34,10 @@ class Page extends React.Component<PageProps> {
     const { title, body } = this.props.pageData.attributes;
 
     return (
-      <div>
-        <Head>
-          <title>Citizens Advice - {title}</title>
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-
-        <Header />
-        <main className="constrained mh-auto ph-6">
-          <h1 className="h1">{title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: body }}></div>
-        </main>
-      </div>
+      <PageTemplate title={title}>
+        <h1 className="h1">{title}</h1>
+        <div dangerouslySetInnerHTML={{ __html: body }}></div>
+      </PageTemplate>
     );
   }
 }
