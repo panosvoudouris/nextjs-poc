@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Header from '../components/header';
+import Footer from '../components/footer';
 import '../css/main.scss';
 
 const Page = (props: { title: React.ReactNode; children: React.ReactNode }) => (
@@ -13,6 +14,8 @@ const Page = (props: { title: React.ReactNode; children: React.ReactNode }) => (
     <Header />
 
     <main className="constrained mh-auto ph-6">{props.children}</main>
+
+    <Footer />
   </div>
 );
 
