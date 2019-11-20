@@ -3,7 +3,10 @@ import Head from '../components/structure/head';
 import Header from '../components/structure/header';
 import Footer from '../components/structure/footer';
 
-const Page = (props: { title: React.ReactNode; children: React.ReactNode }) => (
+const ArticlePage = (props: {
+  title: React.ReactNode;
+  children: React.ReactNode;
+}) => (
   <div>
     <Head title={props.title} />
 
@@ -15,4 +18,4 @@ const Page = (props: { title: React.ReactNode; children: React.ReactNode }) => (
   </div>
 );
 
-export default Page;
+export default ArticlePage;

@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 import PageTemplate from '../templates/top_page';
 
 const Home: NextPage = () => (
-  <PageTemplate title="Home">
+  <PageTemplate title="Welcome">
     <h1 className="h1">Welcome to Citizens Advice</h1>
     <h2>
       Inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
