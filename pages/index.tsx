@@ -1,43 +1,65 @@
 import React from 'react';
 import { NextPage } from 'next';
 import Head from 'next/head';
-import Nav from '../components/nav/nav';
-
-import '../css/main.css';
+import Header from '../components/header';
 
 const Home: NextPage = () => (
   <div>
     <Head>
-      <title>Home</title>
+      <title>Citizens Advice - Home</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <Nav />
+    <Header />
 
-    <div className="hero">
-      <h1 className="title">Welcome to Next.js!</h1>
-      <p className="description">
-        To get started, edit <code>pages/index.js</code> and save to reload.
+    <main className="constrained mh-auto ph-6">
+      <h1 className="h1">Welcome to Citizens Advice</h1>
+      <h2>
+        Inventore veritatis et quasi architecto beatae vitae dicta sunt
+        explicabo.
+      </h2>
+      <p>
+        Temporibus autem quibusdam et aut officiis debitis aut rerum
+        necessitatibus saepe eveniet ut et voluptates repudiandae sint et
+        molestiae non recusandae. Totam rem aperiam. At vero eos et accusamus.
+        Nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
+        reprehenderit qui in ea voluptate velit esse quam.
       </p>
+      <p>
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem.{' '}
+        <strong> Architecto beatae vitae dicta sunt explicabo.</strong>{' '}
+        <em>
+          {' '}
+          Et iusto odio dignissimos ducimus qui blanditiis praesentium
+          voluptatum deleniti atque.
+        </em>{' '}
+        Cupiditate non provident, similique sunt in culpa qui officia deserunt
+        mollitia.
+      </p>
+      <h2>Itaque earum rerum hic tenetur a sapiente delectus.</h2>
+      <p>
+        Temporibus autem quibusdam et aut officiis debitis aut rerum
+        necessitatibus saepe eveniet ut et voluptates repudiandae sint et
+        molestiae non recusandae. Quia consequuntur magni dolores eos qui
+        ratione voluptatem sequi nesciunt.
+      </p>
+      <ol>
+        <li>
+          Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
+          ab illo.
+        </li>
+        <li>Itaque earum rerum hic tenetur a sapiente delectus.</li>
+        <li>Laboris nisi ut aliquip ex ea commodo consequat.</li>
+      </ol>
 
-      <div className="row">
-        <a href="https://nextjs.org/docs" className="card">
-          <h3>Documentation &rarr;</h3>
-          <p>Learn more about Next.js in the documentation.</p>
-        </a>
-        <a href="https://nextjs.org/learn" className="card">
-          <h3>Next.js Learn &rarr;</h3>
-          <p>Learn about Next.js by following an interactive tutorial!</p>
-        </a>
-        <a
-          href="https://github.com/zeit/next.js/tree/master/examples"
-          className="card"
-        >
-          <h3>Examples &rarr;</h3>
-          <p>Find other example boilerplates on the Next.js GitHub.</p>
-        </a>
-      </div>
-    </div>
+      <h3>Eaque ipsa quae ab illo inventore veritatis et quasi.</h3>
+      <p>
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco. Nemo enim
+        ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. Neque
+        porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+        adipisci velit.
+      </p>
+    </main>
   </div>
 );
 

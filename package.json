@@ -8,8 +8,11 @@
     "start": "next start -p 4001"
   },
   "dependencies": {
+    "@citizensadvice/cads": "^1.0.3",
     "@zeit/next-css": "^1.0.1",
+    "@zeit/next-sass": "^1.0.1",
     "next": "9.1.4",
+    "node-sass": "^4.13.0",
     "react": "16.12.0",
     "react-dom": "16.12.0"
   },
