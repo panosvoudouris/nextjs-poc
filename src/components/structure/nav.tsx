@@ -9,7 +9,7 @@ type LinkType = {
   href: string;
 };
 
-const links: LinkType[] = [
+const defaultLinks: LinkType[] = [
   { label: 'Benefits', href: '/benefits' },
   { label: 'Work', href: '#' },
   { label: 'Debt and Money', href: '#' },
@@ -21,10 +21,10 @@ const links: LinkType[] = [
   { label: 'Health', href: '#' }
 ];
 
-const Nav = () => (
+const Nav = (props: { links?: LinkType[] }) => (
   <div className="wrapper flex relative mb-5 navigation bg-heritage-blue w-full">
     <nav className="constrained flex mh-auto overflow-hidden height-10">
-      {links.map(item => (
+      {(props.links || defaultLinks).map(item => (
         <Link href={item.href}>
           <a className={aClasses}>{item.label}</a>
         </Link>
