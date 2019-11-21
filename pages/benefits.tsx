@@ -1,8 +1,8 @@
 import React from 'react';
 import { NextPageContext } from 'next';
-import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
-import PageTemplate from '../src/templates/top_page';
+import ArticlePage from '../src/templates/article';
+import Tile from '../src/components/tile';
 
 type BenefitsProps = {
   pageData: any;
@@ -48,24 +48,21 @@ class Benefits extends React.Component<BenefitsProps> {
 
     const relatedItems = childPages.map(
       (item: { id: any; attributes: any }) => {
-        const { id, attributes } = item;
-        return (
-          <li key={id}>
-            <Link href={attributes.full_url}>
-              <a>{attributes.title}</a>
-            </Link>
-          </li>
-        );
+        const { attributes } = item;
+        const { title, body, full_url } = attributes;
+        return <Tile title={title} href={full_url} body={body} />;
       }
     );
 
     return (
-      <PageTemplate title="Benefits">
+      <ArticlePage title="Benefits">
         <h1 className="h1">{attributes.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: attributes.body }}></div>
         <h2 className="h2">Related items</h2>
-        <ul>{relatedItems}</ul>
-      </PageTemplate>
+        <div className="constrained mh-auto ph-6">
+          <div className="flex flex-wrap gutter-ns">{relatedItems}</div>
+        </div>
+      </ArticlePage>
     );
   }
 }
