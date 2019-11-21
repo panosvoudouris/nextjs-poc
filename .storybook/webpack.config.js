@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = ({ config, mode }) => {
   config.module.rules.push({
     test: /\.(ts|tsx)$/,
@@ -6,6 +8,13 @@ module.exports = ({ config, mode }) => {
       presets: [['react-app', { flow: false, typescript: true }]]
     }
   });
+
+  config.module.rules.push({
+    test: /\.scss$/,
+    loaders: ['style-loader', 'css-loader', 'sass-loader'],
+    include: path.resolve(__dirname, '../')
+  });
+
   config.resolve.extensions.push('.ts', '.tsx');
   return config;
 };
