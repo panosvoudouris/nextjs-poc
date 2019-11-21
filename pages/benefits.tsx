@@ -4,6 +4,7 @@ import fetch from 'isomorphic-unfetch';
 import ArticlePage from '../src/templates/article';
 import Tile from '../src/components/tile';
 import { IPageData, IRelationships } from '../src/types';
+import ErrorBoundary from '../src/components/errorBoundary';
 
 interface IProps {
   pageData: IPageData;
@@ -52,14 +53,16 @@ class Benefits extends React.Component<IProps> {
     });
 
     return (
-      <ArticlePage title="Benefits">
-        <h1 className="h1">{attributes.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: attributes.body }}></div>
-        <h2 className="h2">Related items</h2>
-        <div className="constrained mh-auto ph-6">
-          <div className="flex flex-wrap gutter-ns">{relatedItems}</div>
-        </div>
-      </ArticlePage>
+      <ErrorBoundary>
+        <ArticlePage title="Benefits">
+          <h1 className="h1">{attributes.title}</h1>
+          <div dangerouslySetInnerHTML={{ __html: attributes.body }}></div>
+          <h2 className="h2">Related items</h2>
+          <div className="constrained mh-auto ph-6">
+            <div className="flex flex-wrap gutter-ns">{relatedItems}</div>
+          </div>
+        </ArticlePage>
+      </ErrorBoundary>
     );
   }
 }
