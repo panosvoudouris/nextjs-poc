@@ -4,13 +4,63 @@ import fetch from 'isomorphic-unfetch';
 import ArticlePage from '../src/templates/article';
 import Tile from '../src/components/tile';
 
-type BenefitsProps = {
-  pageData: any;
-  relationships: any;
-  included: any;
-};
+interface IProps {
+  pageData: IPageData;
+  relationships: IRelationships;
+  included: Array<IPageData>;
+}
 
-class Benefits extends React.Component<BenefitsProps> {
+enum PageType {
+  'index',
+  'page'
+}
+
+enum PublishStatus {
+  'live',
+  'draft',
+  'archived'
+}
+
+enum NoticeType {
+  'warning',
+  'important',
+  'normal'
+}
+
+interface ISimplePageData {
+  id: string;
+  type: PageType;
+}
+
+interface IPage {
+  id: number;
+  title: string;
+  body: string;
+  slug: string;
+  meta_description: string;
+  context_type: string;
+  publish_status: PublishStatus;
+  page_child_order_rule: string;
+  order: number;
+  notice_type: NoticeType;
+  full_url: string;
+  breadcrumbs: Array<any>;
+}
+
+interface IRelationships {
+  parent: { data: Array<ISimplePageData> };
+  tags: Array<string>;
+  children: { data: Array<ISimplePageData> };
+}
+
+interface IPageData {
+  id: string;
+  type: PageType;
+  attributes: IPage;
+  relationships: IRelationships;
+}
+
+class Benefits extends React.Component<IProps> {
   static async getInitialProps({ req }: NextPageContext) {
     const res = await fetch('http://cms_headless_api.test:3000/benefits', {
       method: 'GET',
@@ -23,9 +73,9 @@ class Benefits extends React.Component<BenefitsProps> {
     const data = await res.json();
 
     return {
-      pageData: data.data,
-      relationships: data.data.relationships,
-      included: data.included
+      pageData: data.data as IPageData,
+      relationships: data.data.relationships as IRelationships,
+      included: data.included as Array<IPageData>
     };
   }
 
@@ -33,10 +83,8 @@ class Benefits extends React.Component<BenefitsProps> {
     const { pageData, relationships, included } = this.props;
     const { attributes } = pageData;
 
-    const childIds = relationships.children.data.map(
-      (item: { id: string; type: string }) => item.id
-    );
-    const childPages = included.filter((item: { id: any }) => {
+    const childIds = relationships.children.data.map(item => item.id);
+    const childPages = included.filter(item => {
       for (let i = 0; i < childIds.length; i++) {
         if (item.id === childIds[i]) {
           return true;
@@ -46,13 +94,18 @@ class Benefits extends React.Component<BenefitsProps> {
       return false;
     });
 
-    const relatedItems = childPages.map(
-      (item: { id: any; attributes: any }) => {
-        const { attributes } = item;
-        const { title, body, full_url } = attributes;
-        return <Tile title={title} href={full_url} body={body} />;
-      }
-    );
+    const relatedItems = childPages.map((item, index: number) => {
+      const { attributes } = item;
+      const { title, body, full_url } = attributes;
+      return (
+        <Tile
+          key={`tile-item-${index}`}
+          title={title}
+          href={full_url}
+          body={body}
+        />
+      );
+    });
 
     return (
       <ArticlePage title="Benefits">

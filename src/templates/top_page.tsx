@@ -4,7 +4,12 @@ import Header from '../components/structure/header';
 import Footer from '../components/structure/footer';
 import Breadcrumb from '../components/structure/breadcrumb';
 
-const Page = (props: { title: string; children: React.ReactNode }) => (
+interface IProps {
+  title: string;
+  children: React.ReactNode;
+}
+
+const Page = (props: IProps) => (
   <div>
     <Head title={props.title} />
 
