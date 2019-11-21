@@ -62,14 +62,7 @@ interface IPageData {
 
 class Benefits extends React.Component<IProps> {
   static async getInitialProps({ req }: NextPageContext) {
-    const res = await fetch('http://cms_headless_api.test:3000/benefits', {
-      method: 'GET',
-      mode: 'cors',
-      credentials: 'omit',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
+    const res = await fetch('http://cms_headless_api.test:3000/benefits');
     const data = await res.json();
 
     return {
