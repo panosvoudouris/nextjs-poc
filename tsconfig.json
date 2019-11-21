@@ -20,7 +20,7 @@
     "noEmit": true,
     "isolatedModules": true
   },
-  "include": ["./components/**/*", "./pages/**/*"],
+  "include": ["src/**/*", "./pages/**/*"],
   "exclude": ["**/*.test.tsx", "**/*.test.ts", "**/setupTests.ts", "jest"],
   "typeRoots": ["./src/types"]
 }

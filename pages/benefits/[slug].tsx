@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter, SingletonRouter } from 'next/router';
 import { NextPageContext } from 'next';
 import fetch from 'isomorphic-unfetch';
-import PageTemplate from '../../templates/top_page';
+import ArticlePage from '../../src/templates/article';
 
 type PageProps = {
   pageData: any;
@@ -34,10 +34,10 @@ class Page extends React.Component<PageProps> {
     const { title, body } = this.props.pageData.attributes;
 
     return (
-      <PageTemplate title={title}>
+      <ArticlePage title={title}>
         <h1 className="h1">{title}</h1>
         <div dangerouslySetInnerHTML={{ __html: body }}></div>
-      </PageTemplate>
+      </ArticlePage>
     );
   }
 }

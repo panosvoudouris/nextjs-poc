@@ -2,7 +2,7 @@ import React from 'react';
 import { NextPageContext } from 'next';
 import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
-import PageTemplate from '../templates/top_page';
+import PageTemplate from '../src/templates/top_page';
 
 type BenefitsProps = {
   pageData: any;

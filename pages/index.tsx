@@ -1,6 +1,6 @@
 import React from 'react';
 import { NextPage } from 'next';
-import PageTemplate from '../templates/top_page';
+import PageTemplate from '../src/templates/top_page';
 
 const Home: NextPage = () => (
   <PageTemplate title="Welcome">
