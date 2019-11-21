@@ -3,61 +3,12 @@ import { NextPageContext } from 'next';
 import fetch from 'isomorphic-unfetch';
 import ArticlePage from '../src/templates/article';
 import Tile from '../src/components/tile';
+import { IPageData, IRelationships } from '../src/types';
 
 interface IProps {
   pageData: IPageData;
   relationships: IRelationships;
   included: Array<IPageData>;
-}
-
-enum PageType {
-  'index',
-  'page'
-}
-
-enum PublishStatus {
-  'live',
-  'draft',
-  'archived'
-}
-
-enum NoticeType {
-  'warning',
-  'important',
-  'normal'
-}
-
-interface ISimplePageData {
-  id: string;
-  type: PageType;
-}
-
-interface IPage {
-  id: number;
-  title: string;
-  body: string;
-  slug: string;
-  meta_description: string;
-  context_type: string;
-  publish_status: PublishStatus;
-  page_child_order_rule: string;
-  order: number;
-  notice_type: NoticeType;
-  full_url: string;
-  breadcrumbs: Array<any>;
-}
-
-interface IRelationships {
-  parent: { data: Array<ISimplePageData> };
-  tags: Array<string>;
-  children: { data: Array<ISimplePageData> };
-}
-
-interface IPageData {
-  id: string;
-  type: PageType;
-  attributes: IPage;
-  relationships: IRelationships;
 }
 
 class Benefits extends React.Component<IProps> {
