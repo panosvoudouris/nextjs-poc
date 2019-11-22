@@ -21,3 +21,5 @@ To run storybook
 ```
 npm run storybook
 ```
+
+build storybook
