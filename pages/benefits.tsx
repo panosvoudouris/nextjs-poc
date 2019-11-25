@@ -8,6 +8,7 @@ type BenefitsProps = {
   pageData: any;
   relationships: any;
   included: any;
+  crumbs: any;
 };
 
 class Benefits extends React.Component<BenefitsProps> {
@@ -32,6 +33,10 @@ class Benefits extends React.Component<BenefitsProps> {
   render() {
     const { pageData, relationships, included } = this.props;
     const { attributes } = pageData;
+    const crumbs = {
+      region: 'England',
+      crumbs: attributes.breadcrumbs.map((item: any[]) => item[1])
+    };
 
     const childIds = relationships.children.data.map(
       (item: { id: string; type: string }) => item.id
@@ -50,12 +55,19 @@ class Benefits extends React.Component<BenefitsProps> {
       (item: { id: any; attributes: any }) => {
         const { attributes } = item;
         const { title, body, full_url } = attributes;
-        return <Tile title={title} href={full_url} body={body} />;
+        return (
+          <Tile
+            title={title}
+            href={full_url}
+            body={body}
+            key={`benefits-tile-${title}`}
+          />
+        );
       }
     );
 
     return (
-      <ArticlePage title="Benefits">
+      <ArticlePage title="Benefits" crumbs={crumbs}>
         <h1 className="h1">{attributes.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: attributes.body }}></div>
         <h2 className="h2">Related items</h2>

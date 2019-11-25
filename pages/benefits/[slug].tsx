@@ -31,10 +31,14 @@ class Page extends React.Component<PageProps> {
 
   render() {
     // const { slug } = this.props.router.query;
-    const { title, body } = this.props.pageData.attributes;
+    const { title, body, breadcrumbs } = this.props.pageData.attributes;
+    const crumbs = {
+      region: 'England',
+      crumbs: breadcrumbs.map((item: any[]) => item[1])
+    };
 
     return (
-      <ArticlePage title={title}>
+      <ArticlePage title={title} crumbs={crumbs}>
         <h1 className="h1">{title}</h1>
         <div dangerouslySetInnerHTML={{ __html: body }}></div>
       </ArticlePage>

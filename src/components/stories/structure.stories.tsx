@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { object } from '@storybook/addon-knobs';
 
-import Breadcrumb from '../structure/breadcrumb';
+import Breadcrumb, { BreadcrumbProps } from '../structure/breadcrumb';
 import Footer from '../structure/footer';
 import Header from '../structure/header';
 import Nav from '../structure/nav';
@@ -13,7 +13,14 @@ const defaultLinks: any[] = [
   { label: 'Link 3', href: '#3' }
 ];
 
-storiesOf('1 Structure', module).add('Breadcrumb', () => <Breadcrumb />);
+const crumbs: BreadcrumbProps = {
+  region: 'England',
+  crumbs: ['page 1', 'page 2']
+};
+
+storiesOf('1 Structure', module).add('Breadcrumb', () => (
+  <Breadcrumb crumbs={crumbs} />
+));
 storiesOf('1 Structure', module).add('Footer', () => <Footer />);
 storiesOf('1 Structure', module).add('Header', () => <Header />);
 storiesOf('1 Structure', module).add('Nav', () => (
