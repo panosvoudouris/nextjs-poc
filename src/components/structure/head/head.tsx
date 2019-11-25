@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import '../../../css/main.scss';
+import '../../../../css/main.scss';
 
 const PageHead = (props: { title: string }) => (
   <Head>
