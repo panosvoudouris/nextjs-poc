@@ -52,23 +52,14 @@
   "jest": {
     "globals": {
       "ts-jest": {
-        "tsConfig": false
+        "tsConfig": "tsconfig.test.json"
       }
     },
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ],
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx"
-    ],
-    "roots": [
-      "<rootDir>/src"
-    ],
     "testMatch": [
-      "**/?(*.)+(spec|test).+(ts|tsx|js)"
+      "<rootDir>/src/**/*.test.(ts|tsx)"
     ],
     "transform": {
       "\\.(ts|tsx)$": "ts-jest"
