@@ -1,10 +1,10 @@
 import React from 'react';
-import Head from '../components/structure/head';
-import Header from '../components/structure/header';
-import Footer from '../components/structure/footer';
+import Head from '../components/structure/head/head';
+import Header from '../components/structure/header/header';
+import Footer from '../components/structure/footer/footer';
 import Breadcrumb, {
   BreadcrumbProps
-} from '../components/structure/breadcrumb';
+} from '../components/structure/breadcrumb/breadcrumb';
 
 const ArticlePage = (props: {
   title: string;

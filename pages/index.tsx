@@ -1,7 +1,7 @@
 import React from 'react';
 import { NextPage } from 'next';
 import PageTemplate from '../src/templates/top_page';
-import ErrorBoundary from '../src/components/errorBoundary';
+import ErrorBoundary from '../src/components/structure/errorBoundary/errorBoundary';
 
 const Home: NextPage = () => (
   <ErrorBoundary>

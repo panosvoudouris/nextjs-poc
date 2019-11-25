@@ -2,10 +2,12 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { object } from '@storybook/addon-knobs';
 
-import Breadcrumb, { BreadcrumbProps } from '../structure/breadcrumb';
-import Footer from '../structure/footer';
-import Header from '../structure/header';
-import Nav from '../structure/nav';
+import Breadcrumb, {
+  BreadcrumbProps
+} from '../structure/breadcrumb/breadcrumb';
+import Footer from '../structure/footer/footer';
+import Header from '../structure/header/header';
+import Nav from '../structure/nav/nav';
 
 const defaultLinks: any[] = [
   { label: 'Link 1', href: '#1' },

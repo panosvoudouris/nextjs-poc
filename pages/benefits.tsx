@@ -2,9 +2,9 @@ import React from 'react';
 import { NextPageContext } from 'next';
 import fetch from 'isomorphic-unfetch';
 import ArticlePage from '../src/templates/article';
-import Tile from '../src/components/tile';
+import Tile from '../src/components/structure/tile/tile';
 import { IPageData, IRelationships } from '../src/types';
-import ErrorBoundary from '../src/components/errorBoundary';
+import ErrorBoundary from '../src/components/structure/errorBoundary/errorBoundary';
 
 interface IProps {
   pageData: IPageData;
