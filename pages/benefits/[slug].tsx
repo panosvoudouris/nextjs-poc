@@ -3,24 +3,17 @@ import { withRouter, SingletonRouter } from 'next/router';
 import { NextPageContext } from 'next';
 import fetch from 'isomorphic-unfetch';
 import ArticlePage from '../../src/templates/article';
+import { IPageData } from '../../src/types';
 
 type PageProps = {
-  pageData: any;
+  pageData: IPageData;
   router: SingletonRouter;
 };
 
 class Page extends React.Component<PageProps> {
   static async getInitialProps({ query }: NextPageContext) {
     const res = await fetch(
-      `http://cms_headless_api.test:3000/benefits/${query.slug}`,
-      {
-        method: 'GET',
-        mode: 'cors',
-        credentials: 'omit',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }
+      `http://cms_headless_api.test:3000/benefits/${query.slug}`
     );
     const data = await res.json();
 

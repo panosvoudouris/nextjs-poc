@@ -3,30 +3,25 @@ import { NextPageContext } from 'next';
 import fetch from 'isomorphic-unfetch';
 import ArticlePage from '../src/templates/article';
 import Tile from '../src/components/tile';
+import { IPageData, IRelationships } from '../src/types';
+import ErrorBoundary from '../src/components/errorBoundary';
 
-type BenefitsProps = {
-  pageData: any;
-  relationships: any;
-  included: any;
+interface IProps {
+  pageData: IPageData;
+  relationships: IRelationships;
+  included: Array<IPageData>;
   crumbs: any;
-};
+}
 
-class Benefits extends React.Component<BenefitsProps> {
+class Benefits extends React.Component<IProps> {
   static async getInitialProps({ req }: NextPageContext) {
-    const res = await fetch('http://cms_headless_api.test:3000/benefits', {
-      method: 'GET',
-      mode: 'cors',
-      credentials: 'omit',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
+    const res = await fetch('http://cms_headless_api.test:3000/benefits');
     const data = await res.json();
 
     return {
-      pageData: data.data,
-      relationships: data.data.relationships,
-      included: data.included
+      pageData: data.data as IPageData,
+      relationships: data.data.relationships as IRelationships,
+      included: data.included as Array<IPageData>
     };
   }
 
@@ -38,10 +33,8 @@ class Benefits extends React.Component<BenefitsProps> {
       crumbs: attributes.breadcrumbs.map((item: any[]) => item[1])
     };
 
-    const childIds = relationships.children.data.map(
-      (item: { id: string; type: string }) => item.id
-    );
-    const childPages = included.filter((item: { id: any }) => {
+    const childIds = relationships.children.data.map(item => item.id);
+    const childPages = included.filter(item => {
       for (let i = 0; i < childIds.length; i++) {
         if (item.id === childIds[i]) {
           return true;
@@ -51,30 +44,30 @@ class Benefits extends React.Component<BenefitsProps> {
       return false;
     });
 
-    const relatedItems = childPages.map(
-      (item: { id: any; attributes: any }) => {
-        const { attributes } = item;
-        const { title, body, full_url } = attributes;
-        return (
-          <Tile
-            title={title}
-            href={full_url}
-            body={body}
-            key={`benefits-tile-${title}`}
-          />
-        );
-      }
-    );
+    const relatedItems = childPages.map((item, index: number) => {
+      const { attributes } = item;
+      const { title, body, full_url } = attributes;
+      return (
+        <Tile
+          key={`tile-item-${index}`}
+          title={title}
+          href={full_url}
+          body={body}
+        />
+      );
+    });
 
     return (
-      <ArticlePage title="Benefits" crumbs={crumbs}>
-        <h1 className="h1">{attributes.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: attributes.body }}></div>
-        <h2 className="h2">Related items</h2>
-        <div className="constrained mh-auto ph-6">
-          <div className="flex flex-wrap gutter-ns">{relatedItems}</div>
-        </div>
-      </ArticlePage>
+      <ErrorBoundary>
+        <ArticlePage title="Benefits" crumbs={crumbs}>
+          <h1 className="h1">{attributes.title}</h1>
+          <div dangerouslySetInnerHTML={{ __html: attributes.body }}></div>
+          <h2 className="h2">Related items</h2>
+          <div className="constrained mh-auto ph-6">
+            <div className="flex flex-wrap gutter-ns">{relatedItems}</div>
+          </div>
+        </ArticlePage>
+      </ErrorBoundary>
     );
   }
 }

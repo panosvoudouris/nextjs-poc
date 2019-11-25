@@ -24,8 +24,8 @@ const defaultLinks: LinkType[] = [
 const Nav = (props: { links?: LinkType[] }) => (
   <div className="wrapper flex relative mb-5 navigation bg-heritage-blue w-full">
     <nav className="constrained flex mh-auto overflow-hidden height-10">
-      {(props.links || defaultLinks).map(item => (
-        <Link href={item.href} key={`nav-link-${item.label}`}>
+      {(props.links || defaultLinks).map((item, index) => (
+        <Link key={`nav-item-${index}`} href={item.href}>
           <a className={aClasses}>{item.label}</a>
         </Link>
       ))}
